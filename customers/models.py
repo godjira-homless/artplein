@@ -5,8 +5,11 @@ class Person(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
 
+
     class Meta:
         verbose_name_plural = "vezeteknev"
 
     def __str__(self):
         return self.first_name
+
+

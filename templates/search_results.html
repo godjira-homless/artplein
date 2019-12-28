@@ -3,16 +3,23 @@
 
 {% block content %}
 <div id="content-wrapper">
-    {% for person in persons %}
-    <p>{{ person.first_name }} {{ person.last_name }}</p>
-    {% endfor %}
+    <p>Search result</p>
+  {% for person in object_list %}
+    <li>
+
+        <a href="{% url 'detail' person.pk %}">{{ person.first_name }}</a>
+
+    </li>
+  {% endfor %}
 
 <h1>HomePage</h1>
 
 <form action="{% url 'search_results' %}" method="get">
   <input name="q" type="text" placeholder="Search...">
-     <input type="submit" name="btn" value="keres">
+   <input type="submit" name="btn" value="keres">
 </form>
+
+
 
 
 </div>

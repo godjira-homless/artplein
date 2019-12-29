@@ -54,6 +54,6 @@ def edit(request, id=None, template_name='form.html'):
     id = get_object_or_404(Person, pk=id)
     form = PersonForm(request.POST or None, instance=id)
     if form.is_valid():
-        form.save(commit=False)
+        form.save()
 
     return render(request, 'form.html', {'form': form})

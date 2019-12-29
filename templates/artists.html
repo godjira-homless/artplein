@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <form action="{% url 'artist_search' %}" method="get">
+                <input name="q" type="text" placeholder="Keresés...">
+                <input type="submit" name="btn" value="keres">
+            </form>
+        </div>
+        <div class="col-sm">
+            New artist
+        </div>
+        <div class="col-sm">
+            valami
+        </div>
+    </div>
+</div>
+
+
+    {% if object_list %}
+
+<div class="container">
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Biop</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for artist in object_list %}
+    <tr>
+      <th scope="row">{{ artist.id }}</th>
+      <td>{{ artist.name }}</td>
+      <td>{{ artist.bio }}</td>
+      <td>@mdo</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+</div>
+    {% endif %}
+
+{% endblock content %}

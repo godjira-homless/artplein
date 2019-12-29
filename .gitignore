@@ -1,1 +1,12 @@
 myvenv/
+src/settings.py
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+pip-log.txt
+pip-delete-this-directory.txt

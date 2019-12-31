@@ -10,11 +10,28 @@
     <input type="submit" value="Search">
 </form>
 
+<div class="mt-2 container">
+    <h3>Results</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">do</th>
+        </tr>
+        </thead>
+        <tbody>
+
 {% for appraiser in queryset_list %}
-
-<p>   {{ appraiser.name }} </p>
-
+        <tr>
+            <th scope="row">{{ appraiser.id }}</th>
+            <td><a href="">{{ appraiser.name }}</a></td>
+            <td><a href="">edit</a> delete</td>
+        </tr>
 {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <div class="pagination">
     <span class="step-links">

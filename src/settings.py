@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customers',
     'artists',
+    'appraisers',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,9 +1,11 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from .models import Appraisers
+from .forms import AppraiserForm
 
 
 def appraisers(request):
@@ -25,3 +27,22 @@ def appraisers(request):
 
     context = {'queryset_list': queryset_list}
     return render(request, 'appraisers.html', context)
+
+def new_appraiser(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = AppraiserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = AppraiserForm()
+            error_message = "Nincs hiba"
+            context = {'form': form, 'error_message': error_message}
+            #return render(request, 'appraisers.html', context)
+            return redirect(appraisers)
+
+        else:
+            error_message = "Hiba van"
+            form = AppraiserForm()
+            context = {'form': form, 'error_message': error_message}
+            return render(request, 'appraisers.html', context)

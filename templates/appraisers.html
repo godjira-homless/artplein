@@ -5,6 +5,15 @@
 
 <p>appraisers</p>
 
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'new_appraiser' %}" method="POST">
+{% csrf_token %}
+    <input type="text" name="name" placeholder="appraiser name">
+<input type="submit" value="create new">
+</form>
+
+
 <form method='GET' action=''>
     <input type="text" name="q" placeholder="Search appraiser" value='{{ request.GET.q }}'>
     <input type="submit" value="Search">

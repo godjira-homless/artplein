@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.urls import reverse
+
 from .models import Appraisers
 from .forms import AppraiserForm
 
@@ -33,16 +35,18 @@ def new_appraiser(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = AppraiserForm(request.POST)
+
         if form.is_valid():
-            form.save()
-            form = AppraiserForm()
-            error_message = "Nincs hiba"
-            context = {'form': form, 'error_message': error_message}
+            post = form.save(commit=False)
+            post.save()
+
             #return render(request, 'appraisers.html', context)
             return redirect(appraisers)
+           # return redirect(reverse('appraisers', kwargs={"error_message": error_message}))
 
         else:
-            error_message = "Hiba van"
+
+            error_message = form.errors
             form = AppraiserForm()
             context = {'form': form, 'error_message': error_message}
             return render(request, 'appraisers.html', context)

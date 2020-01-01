@@ -1,8 +1,8 @@
-myvenv/
 src/settings.py
 *.log
 *.pot
 *.pyc
+*.swp
 __pycache__/
 local_settings.py
 db.sqlite3

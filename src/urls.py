@@ -25,4 +25,5 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html')),
     path('artists/', include('artists.urls')),
     path('appraisers/', include('appraisers.urls')),
+    path('technics/', include('technics.urls')),
 ]

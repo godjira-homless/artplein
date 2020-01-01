@@ -5,9 +5,9 @@
 
 <p>appraisers</p>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-{{ form.field_errors }}
+{% if error_message %}
+{{ error_message }}
+{% endif %}
 
 
 <form action="{% url 'new_appraiser' %}" method="POST">
@@ -16,14 +16,13 @@
     <input type="submit" value="create new">
 </form>
 
-
 <form method='GET' action=''>
     <input type="text" name="q" placeholder="Search appraiser" value='{{ request.GET.q }}'>
     <input type="submit" value="Search">
 </form>
 
 <div class="error"></div>
-{{ field.errors }}
+
 <div class="mt-2 container">
     <h3>Results</h3>
     <table class="table">

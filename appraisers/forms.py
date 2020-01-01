@@ -14,7 +14,7 @@ class AppraiserForm(forms.ModelForm):
         name = self.cleaned_data['name']
         name_l = name
         if len(name_l) < 3:
-            raise ValidationError("at least 3 character!")
+            raise forms.ValidationError("at least 3 character!")
 
 
         return name_l

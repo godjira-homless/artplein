@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.http import HttpResponseRedirect
@@ -30,6 +31,7 @@ def appraisers(request):
     context = {'queryset_list': queryset_list}
     return render(request, 'appraisers.html', context)
 
+
 def new_appraiser(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -40,12 +42,11 @@ def new_appraiser(request):
             post = form.save(commit=False)
             post.save()
 
-            #return render(request, 'appraisers.html', context)
+            # return render(request, 'appraisers.html', context)
             return redirect(appraisers)
-           # return redirect(reverse('appraisers', kwargs={"error_message": error_message}))
+        # return redirect(reverse('appraisers', kwargs={"error_message": error_message}))
 
         else:
-
             error_message = form.errors
             form = AppraiserForm()
             context = {'form': form, 'error_message': error_message}

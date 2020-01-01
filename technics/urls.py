@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import TechnicListView, TechnicDetailView, TechnicDeleteView
+from .views import TechnicListView, TechnicDetailView, TechnicDeleteView, TechnicCreateView
 
 
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
     path('<slug:slug>', TechnicDetailView.as_view(), name='technic_detail'),
     path('', TechnicListView.as_view(), name='technic_list'),
     path('<slug:slug>/delete/', TechnicDeleteView.as_view(), name='technic_delete'),
+    path('create/', TechnicCreateView.as_view(), name='technic_create'),
 ]

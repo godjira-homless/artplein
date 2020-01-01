@@ -20,6 +20,22 @@ class TechnicCreateView(CreateView):
     #def get_success_url(self): #override the url
     #    return '/'
 
+class TechnicUpdateView(UpdateView):
+    template_name = 'technic_create.html'
+    form_class = TechnicMofelForm
+    #success_url '/' # another ovverride the url
+
+    def get_object(self):
+        slug_ = self.kwargs.get("slug")
+        return get_object_or_404(Technic, slug=slug_)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+    #def get_success_url(self): #override the url
+    #    return '/'
+
 class TechnicListView(ListView):
     model = Technic
     template_name = 'technic_list.html'

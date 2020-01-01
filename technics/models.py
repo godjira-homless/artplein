@@ -14,7 +14,6 @@ class Technic(models.Model):
         return reverse('technic_detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        #if not self.slug:
+        self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
-

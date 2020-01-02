@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView, DeleteView, CreateView, U
 from django.urls import reverse
 
 from .forms import TechnicMofelForm
-from .models import Technic
+from .models import Technic, TechnicManager
 from .filters import TechnicFilter
 
 class TechnicCreateView(CreateView):
@@ -45,8 +45,8 @@ class TechnicListView(ListView):
         context['filter'] = TechnicFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
-    queryset = Technic.objects.all()
-
+    #queryset = Technic.objects.all()
+    queryset = Technic.objects.nopaint_technics()
 
 class TechnicDetailView(DetailView):
     model = Technic

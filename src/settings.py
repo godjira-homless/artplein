@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'customers',
     'artists',
     'appraisers',
-    'technics'
+    'technics',
+
 ]
 
 

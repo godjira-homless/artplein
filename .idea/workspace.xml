@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40bed705-6460-4407-8c91-901e7edd0cfe" name="Default Changelist" comment="" />
+    <list default="true" id="40bed705-6460-4407-8c91-901e7edd0cfe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/technics/filters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/technics/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/technics/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/technics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/technics/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/technic_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/technic_list.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,13 +69,13 @@
       <screen x="67" y="27" width="1373" height="873" />
     </state>
     <state x="281" y="176" width="424" height="484" key="FileChooserDialogImpl/67.27.1373.873@67.27.1373.873" timestamp="1577789949637" />
-    <state x="242" y="97" key="SettingsEditor" timestamp="1577790047897">
+    <state x="242" y="97" key="SettingsEditor" timestamp="1577969752503">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
-    <state x="242" y="97" key="SettingsEditor/67.27.1373.873@67.27.1373.873" timestamp="1577790047897" />
-    <state x="417" y="108" width="670" height="676" key="search.everywhere.popup" timestamp="1577802008100">
+    <state x="242" y="97" key="SettingsEditor/67.27.1373.873@67.27.1373.873" timestamp="1577969752503" />
+    <state x="417" y="108" width="672" height="676" key="search.everywhere.popup" timestamp="1577969874083">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
-    <state x="417" y="108" width="670" height="676" key="search.everywhere.popup/67.27.1373.873@67.27.1373.873" timestamp="1577802008100" />
+    <state x="417" y="108" width="672" height="676" key="search.everywhere.popup/67.27.1373.873@67.27.1373.873" timestamp="1577969874083" />
   </component>
 </project>

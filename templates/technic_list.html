@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 
 
-
 {% block content %}
 
-{%for technic in object_list %}
+<div class="container">
+ <form method="GET">
+{{ filter.form }}
+     <button type="submit" class="btn btn-primary">Search</button>
+ </form>
+
+
+
+{%for technic in filter.qs %}
     <ul>
         <li><a href="{{ technic.get_absolute_url }}">{{ technic.name }}</a></li>
     </ul>
 {% endfor %}
 
+
+</div>
+
+
 {% endblock content %}
+

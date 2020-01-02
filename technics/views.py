@@ -5,7 +5,7 @@ from django.urls import reverse
 
 from .forms import TechnicMofelForm
 from .models import Technic
-
+from .filters import TechnicFilter
 
 class TechnicCreateView(CreateView):
     template_name = 'technic_create.html'
@@ -39,7 +39,14 @@ class TechnicUpdateView(UpdateView):
 class TechnicListView(ListView):
     model = Technic
     template_name = 'technic_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = TechnicFilter(self.request.GET, queryset=self.get_queryset())
+        return context
+
     queryset = Technic.objects.all()
+
 
 class TechnicDetailView(DetailView):
     model = Technic

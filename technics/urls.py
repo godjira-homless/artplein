@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import TechnicListView, TechnicDetailView, TechnicDeleteView, TechnicCreateView, TechnicUpdateView
 
-app_name = 'technics'
+
 urlpatterns = [
     # path('', views.technics, name='technics'),
     path('<slug:slug>', TechnicDetailView.as_view(), name='technic_detail'),

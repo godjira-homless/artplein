@@ -43,10 +43,12 @@ class TechnicListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filter'] = TechnicFilter(self.request.GET, queryset=self.get_queryset())
+        context['short'] = TechnicFilter(self.request.GET, queryset=Technic.objects.nopaint_technics())
         return context
 
-    #queryset = Technic.objects.all()
-    queryset = Technic.objects.nopaint_technics()
+    queryset = Technic.objects.all()
+    #queryset2 = Technic.objects.nopaint_technics()
+
 
 class TechnicDetailView(DetailView):
     model = Technic

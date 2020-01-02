@@ -9,11 +9,15 @@
      <button type="submit" class="btn btn-primary">Search</button>
  </form>
 
-
-
 {%for technic in filter.qs %}
     <ul>
         <li><a href="{{ technic.get_absolute_url }}">{{ technic.name }}</a></li>
+    </ul>
+{% endfor %}
+
+    {%for technic in short.qs %}
+    <ul>
+        <li>{{ technic.name }}</a></li>
     </ul>
 {% endfor %}
 

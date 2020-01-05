@@ -11,7 +11,7 @@ class TechnicManager(models.Manager):
 
 
 class Technic(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, blank=False, null=False)
     slug = models.SlugField(null=False, unique=True)
     objects = TechnicManager()
 

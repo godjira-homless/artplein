@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'artists',
     'appraisers',
     'technics',
+    'items'
 
 ]
 

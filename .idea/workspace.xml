@@ -2,33 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40bed705-6460-4407-8c91-901e7edd0cfe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/items/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/items_create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/items_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/items/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artists/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/artists/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/Django-3.0.1.dist-info/AUTHORS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/Django-3.0.1.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/Django-3.0.1.dist-info/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/Django-3.0.1.dist-info/LICENSE.python" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/Django-3.0.1.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/Django-3.0.1.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/Django-3.0.1.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/Django-3.0.1.dist-info/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/Django-3.0.1.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/backends/postgresql/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/backends/postgresql/schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/models/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/models/expressions.py" beforeDir="false" afterPath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/models/expressions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/models/sql/compiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/models/sql/compiler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/models/sql/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/myvenv/lib/python3.6/site-packages/django/db/models/sql/query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/technics/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/technics/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/technics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/technics/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/technic_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/technic_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/items/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/items/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/items_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/items_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>

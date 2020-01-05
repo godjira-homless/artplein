@@ -5,5 +5,11 @@
 
 <a href="{% url 'item_create' %}">Create new item</a>
 
+    {%for item in items %}
+    <ul>
+        <li>{{ item.code }}</a></li>
+    </ul>
+    {% endfor %}
+
 {% endblock content %}
 

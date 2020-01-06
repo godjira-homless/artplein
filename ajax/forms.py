@@ -15,6 +15,7 @@ class AjaxForm(forms.ModelForm):
                   'title',
                   'tech',
                   'description',
+                  'size',
                   )
 
 #       widgets = {

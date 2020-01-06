@@ -6,7 +6,7 @@
 <a href="{% url 'create_ajax' %}">Create new ajax</a>
 <ul>
     {% for item in items %}
-<li>{{ item.code }} {{ item.title }} {{ item.artist }}</li>
+<li>{{ item.code }} {{ item.title }} {{ item.artist }} {{ item.size }}</li>
     {% endfor %}
 </ul>
 {% endblock content %}

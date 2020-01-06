@@ -11,4 +11,5 @@ urlpatterns = [
     path('create/', views.create_item, name='item_create'),
     #path('<slug:slug>/update/', TechnicUpdateView.as_view(), name='technic_update'),
     path('contact-name-search/', views.contact_name_search, name='contact-name-search'),
+
 ]

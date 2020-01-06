@@ -27,4 +27,6 @@ urlpatterns = [
     path('appraisers/', include('appraisers.urls')),
     path('technics/', include('technics.urls')),
     path('items/', include('items.urls')),
+    path('ajax/', include(("ajax.urls"))),
+
 ]

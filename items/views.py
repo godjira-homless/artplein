@@ -1,3 +1,4 @@
+
 import json
 
 from django.db.models import Q
@@ -11,10 +12,18 @@ from artists.models import Artist
 def items_list(request):
     items = Item.objects.all()
     context = {'items': items}
+
+from django.shortcuts import render
+
+
+def items_list(request):
+    context = {}
+
     return render(request, 'items_list.html', context)
 
 
 def create_item(request):
+
     if request.method == 'POST':
         form = ItemForm(request.POST)
         if form.is_valid():
@@ -35,3 +44,7 @@ def contact_name_search(request):
         data = json.dumps(result)
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+    context = {}
+    return render(request, 'items_create.html', context)
+

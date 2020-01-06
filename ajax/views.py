@@ -1,3 +1,5 @@
+from typing import List
+
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
@@ -25,6 +27,7 @@ def contact_name_search(request):
 def ajax_list(request):
     items = Ajax.objects.all()
     context = {'items': items}
+
     return render(request, 'ajax_list.html', context)
 
 

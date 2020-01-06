@@ -4,7 +4,6 @@ from django.urls import reverse
 from artists.models import Artist
 from technics.models import Technic
 
-
 class Ajax(models.Model):
     code = models.IntegerField(blank=False, default=None)
     title = models.CharField(max_length=200, blank=True)

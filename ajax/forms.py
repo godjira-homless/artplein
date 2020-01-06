@@ -7,7 +7,7 @@ from artists.models import Artist
 
 
 class AjaxForm(forms.ModelForm):
-    artist = forms.CharField()
+    artist = forms.CharField(widget=forms.TextInput(attrs={'id': 'contact_name_search_input', 'name': "contact_name_search"}))
 
     class Meta:
         model = Ajax
@@ -18,6 +18,3 @@ class AjaxForm(forms.ModelForm):
                   'size',
                   )
 
-#       widgets = {
-#        'artist': TextInput(attrs={'id': 'artist'}),
-#       }

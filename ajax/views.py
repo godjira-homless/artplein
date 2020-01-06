@@ -7,6 +7,20 @@ from artists.models import Artist
 from technics.models import Technic
 import json
 
+def contact_name_search(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        names = Artist.objects.filter(Q(name__icontains=q))
+        result = []
+        for n in names:
+            name_json = n.name
+            result.append(name_json)
+        data = json.dumps(result)
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+    context = {}
+    return render(request, 'ajax_create.html', context)
 
 def ajax_list(request):
     items = Ajax.objects.all()

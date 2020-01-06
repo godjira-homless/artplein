@@ -16,6 +16,6 @@ class AjaxForm(forms.ModelForm):
                   )
 
         widgets = {
-            'title': TextInput(attrs={'id': 'post-text'}),
+            'title': TextInput(attrs={'id': 'title'}),
          }
 

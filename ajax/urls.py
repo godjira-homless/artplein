@@ -8,6 +8,5 @@ urlpatterns = [
 
     path('', views.ajax_list, name='ajax_list'),
     path('create/', views.create_ajax, name='create_ajax'),
-    path('', create_ajax, name="create")
 
 ]

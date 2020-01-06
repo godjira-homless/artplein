@@ -67,6 +67,7 @@
   </div>
 </nav>
 
+
     {% block content %}  {% endblock content %}
 
 </body>
@@ -82,4 +83,21 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
+<!--    # jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--    # jQuery.ui -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+
+    <script>
+    $(function() {
+        $("#contact_name_search_input").autocomplete({
+            source: "{% url 'contact-name-search' %}",
+            minLength: 1,
+            delay: 300,
+        });
+    });
+    </script>
 </html>

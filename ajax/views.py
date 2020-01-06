@@ -21,10 +21,7 @@ def create_ajax(request):
             code = request.POST.get("code")
             title = request.POST.get("title")
             artist_name = request.POST.get("artist")
-            #artist_name = "Nagy Sándor"
             artist, created = Artist.objects.get_or_create(name=artist_name)
-            print(artist_name)
-            print(artist)
             tech = request.POST.get("tech")
             tech = Technic.objects.get(id=tech)
             description = request.POST.get("description")

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<p>hello Ajax</p>
+
+<a href="{% url 'create_ajax' %}">Create new ajax</a>
+<ul>
+    {% for item in items %}
+<li>{{ item.code }} {{ item.title }} {{ item.artist }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
+

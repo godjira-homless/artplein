@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    <form method="GET">
+        {{ filter.form }}
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    {% if filter.qs %}
+    {%for technic in technics %}
+    <ul>
+        <li><a href="{{ technic.get_absolute_url }}">{{ technic.name }}</a></li>
+    </ul>
+    {% endfor %}
+
+   {% if is_paginated %}
+<ul class="pagination">
+{% if page_obj.has_previous %}
+    <li>
+        <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+    </li>
+{% endif %}
+    <li class="">
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+    </li>
+{% if page_obj.has_next %}
+    <li>
+        <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+    </li>
+{% endif %}
+</ul>
+{% else %}
+    <h3>Your File Exam</h3>
+    <p>File not yet available</p>
+{% endif %}
+
+    {% endif %}
+
+
+
+
+
+
+
+
+    {%for technic in short.qs %}
+    <ul>
+        <li>{{ technic.name }}</a></li>
+    </ul>
+    {% endfor %}
+
+
+
+</div>
+
+
+{% endblock content %}
+

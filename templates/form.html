@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if messages %}
+<p>messages</p>
+{% endif %}
+
+{% if error %}
+<p>error</p>
+{% endif %}
+
+
+<form method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+    <button type="submit" value="editpost"/>Submit</button>
+</form>
+
+{% endblock content %}

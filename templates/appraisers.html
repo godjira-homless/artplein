@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<p>appraisers</p>
+
+{% if error_message %}
+{{ error_message }}
+{% endif %}
+
+
+<form action="{% url 'new_appraiser' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="appraiser name">
+    <input type="submit" value="create new">
+</form>
+
+<form method='GET' action=''>
+    <input type="text" name="q" placeholder="Search appraiser" value='{{ request.GET.q }}'>
+    <input type="submit" value="Search">
+</form>
+
+<div class="error"></div>
+
+<div class="mt-2 container">
+    <h3>Results</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">do</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for appraiser in queryset_list %}
+        <tr>
+            <th scope="row">{{ appraiser.id }}</th>
+            <td><a href="">{{ appraiser.name }}</a></td>
+            <td><a href="">edit</a> delete</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if queryset_list.has_previous %}
+            <a href="?page={{ 1 }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&laquo; first</a>
+            <a href="?page={{ queryset_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ queryset_list.number }} of {{ queryset_list.paginator.num_pages }}.
+        </span>
+
+        {% if queryset_list.has_next %}
+            <a href="?page={{ queryset_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+            <a href="?page={{ queryset_list.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}
+
+
+
+
+

@@ -1,6 +1,6 @@
 from typing import List
 
-from django.db.models import Q
+from django.db.models import Q, Max, F
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from .forms import AjaxForm
@@ -8,6 +8,7 @@ from .models import Ajax
 from artists.models import Artist
 from technics.models import Technic
 import json
+
 
 def contact_name_search(request):
     if request.is_ajax():
@@ -24,10 +25,13 @@ def contact_name_search(request):
     context = {}
     return render(request, 'ajax_create.html', context)
 
+
 def ajax_list(request):
     items = Ajax.objects.all()
-    context = {'items': items}
+    # vmi= Ajax.objects.filter(title__icontains='Puszta')
+    next_code = Ajax.objects.all().order_by("-code")[0]
 
+    context = {'items': items, 'next_code': next_code}
     return render(request, 'ajax_list.html', context)
 
 
@@ -65,10 +69,13 @@ def create_ajax(request):
         form = AjaxForm(request.POST)
         if form.is_valid():
             item = form.save()
+            artist_id = request.POST.get("id")
+            print(artist_id)
             artist_name = request.POST.get("artist")
             item.artist, created = Artist.objects.get_or_create(name=artist_name)
-
             item.save()
 
-    form = AjaxForm()
+    next_code = Ajax.objects.all().order_by("-code")[0]
+    next_code.code+=1
+    form = AjaxForm(initial={'code': next_code})
     return render(request, 'ajax_create.html', {'form': form})

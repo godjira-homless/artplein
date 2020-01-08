@@ -30,6 +30,10 @@ def ajax_list(request):
     # next_code = Ajax.objects.all().order_by("-code")[0]
     # next_code = Ajax.objects.aggregate(Max('code'))
     next_code = Ajax.objects.filter().order_by('-code').first()
+    if next_code:
+        next_code = next_code
+    else:
+        next_code = 1
     context = {'items': items, 'next_code': next_code}
     return render(request, 'ajax_list.html', context)
 
@@ -75,6 +79,6 @@ def create_ajax(request):
             item.save()
 
     next_code = Ajax.objects.all().order_by("-code")[0]
-    next_code.code+=1
+    next_code.code += 1
     form = AjaxForm(initial={'code': next_code})
     return render(request, 'ajax_create.html', {'form': form})

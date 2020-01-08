@@ -1,5 +1,3 @@
-from typing import List
-
 from django.db.models import Q, Max, F
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
@@ -29,8 +27,9 @@ def contact_name_search(request):
 def ajax_list(request):
     items = Ajax.objects.all()
     # vmi= Ajax.objects.filter(title__icontains='Puszta')
-    next_code = Ajax.objects.all().order_by("-code")[0]
-
+    # next_code = Ajax.objects.all().order_by("-code")[0]
+    # next_code = Ajax.objects.aggregate(Max('code'))
+    next_code = Ajax.objects.filter().order_by('-code').first()
     context = {'items': items, 'next_code': next_code}
     return render(request, 'ajax_list.html', context)
 

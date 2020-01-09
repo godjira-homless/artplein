@@ -2,7 +2,7 @@ from django.db.models import Q, Max, F
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from .forms import AjaxForm
-from .models import Ajax
+from .models import Ajax, AjaxManager
 from artists.models import Artist
 from technics.models import Technic
 import json
@@ -29,11 +29,7 @@ def ajax_list(request):
     # vmi= Ajax.objects.filter(title__icontains='Puszta')
     # next_code = Ajax.objects.all().order_by("-code")[0]
     # next_code = Ajax.objects.aggregate(Max('code'))
-    next_code = Ajax.objects.filter().order_by('-code').first()
-    if next_code:
-        next_code = next_code
-    else:
-        next_code = 1
+    next_code = Ajax.objects.last_code()
     context = {'items': items, 'next_code': next_code}
     return render(request, 'ajax_list.html', context)
 
@@ -78,11 +74,7 @@ def create_ajax(request):
             item.artist, created = Artist.objects.get_or_create(name=artist_name)
             item.save()
 
-    # next_code = Ajax.objects.all().order_by("-code")[0]
-    next_code = Ajax.objects.filter().order_by('-code').first()
-    if next_code:
-        next_code.code += 1
-    else:
-        next_code = 1
+    next_code = Ajax.objects.last_code()
+    next_code.code += 1
     form = AjaxForm(initial={'code': next_code})
     return render(request, 'ajax_create.html', {'form': form})

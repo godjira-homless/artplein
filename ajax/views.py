@@ -14,12 +14,10 @@ def contact_name_search(request):
         names = Artist.objects.filter(Q(name__icontains=q))
         result = []
         for n in names:
-            name_json = n.name
-            result.append(name_json)
+            result.append(n.name)
         data = json.dumps(result)
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
-
     context = {}
     return render(request, 'ajax_create.html', context)
 
@@ -68,8 +66,6 @@ def create_ajax(request):
         form = AjaxForm(request.POST)
         if form.is_valid():
             item = form.save()
-            artist_id = request.POST.get("id")
-            print(artist_id)
             artist_name = request.POST.get("artist")
             item.artist, created = Artist.objects.get_or_create(name=artist_name)
             item.save()

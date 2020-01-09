@@ -28,5 +28,7 @@ urlpatterns = [
     path('technics/', include('technics.urls')),
     path('items/', include('items.urls')),
     path('ajax/', include(("ajax.urls"))),
+    path('project/', include(("project.urls"))),
+
 
 ]

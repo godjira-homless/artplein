@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'technics',
     'items',
     'ajax',
+    'project',
 
 ]
 

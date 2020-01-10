@@ -6,7 +6,7 @@
 <a href="{% url 'create_lot' %}">Create new lot</a>
 <ul>
     {% for item in items %}
-<li>{{ item.code }} {{ item.artist }} {{ item.slug }} </li>
+    <li>{{ item.code }} {{ item.artist }} {{ item.slug }} <a href="{{ item.slug }}">{{ item.title }}</a> </li>
 
     {% endfor %}
 </ul>

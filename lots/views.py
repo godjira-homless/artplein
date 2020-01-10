@@ -44,8 +44,7 @@ def detail_lot(request, slug):
         q = q.first()
     else:
         return HttpResponse('<h1>Post Not Found</h1>')
-
     context = {
-        'post': q
+        'post': q,
     }
     return render(request, 'lot_detail.html', context)

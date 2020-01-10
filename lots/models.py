@@ -21,5 +21,17 @@ class Lots(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            # self.slug = slugify(self.title)
+            self.slug = self.get_unique_slug(self.id, self.title, Lots.objects)
         return super().save(*args, **kwargs)
+
+    def get_unique_slug(self, id, title, obj):
+        slug = slugify(title)
+        unique_slug = slug
+        counter = 1
+        while obj.filter(slug=unique_slug).exists():
+            if obj.filter(slug=unique_slug).values('id')[0]['id'] == id:
+                break
+            unique_slug = '{}-{}'.format(slug, counter)
+            counter += 1
+        return unique_slug

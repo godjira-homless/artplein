@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render
 import json
@@ -21,7 +22,8 @@ def create_project(request):
 
 def champion_auto_complete(request):
     q = request.GET.get('term', '')
-    users = User.objects.filter(is_active=True)
+    # users = User.objects.filter(is_active=True)
+    users = User.objects.filter(Q(username__icontains=q) | Q(last_name__icontains=q))
     users_list = []
 
     for u in users:

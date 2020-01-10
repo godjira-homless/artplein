@@ -17,7 +17,7 @@ class Lots(models.Model):
         return str(self.code)
 
     def get_absolute_url(self):
-        return reverse('lots_detail', kwargs={'slug': self.slug})
+        return reverse('detail_lot', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
         if not self.slug:

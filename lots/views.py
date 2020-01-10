@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Lots
 from artists.models import Artist
 from .forms import LotsForm
@@ -36,3 +36,16 @@ def artist_auto_complete(request):
     data = json.dumps(users_list)
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+
+def detail_lot(request, slug):
+    q = Lots.objects.filter(slug__iexact=slug)
+    if q.exists():
+        q = q.first()
+    else:
+        return HttpResponse('<h1>Post Not Found</h1>')
+
+    context = {
+        'post': q
+    }
+    return render(request, 'lot_detail.html', context)

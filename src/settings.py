@@ -100,6 +100,7 @@ DATABASES = {
 #        'PORT': '3306',
 #    }
 #}
+# artdjango.mysql.pythonanywhere-services.com
 
 
 

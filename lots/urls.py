@@ -7,6 +7,6 @@ urlpatterns = [
 
     path('', views.lots_list, name='lots_list'),
     path('create/', views.create_lot, name='create_lot'),
-    #path('contact-name-search/', views.contact_name_search, name='contact-name-search'),
+    path('artist_auto_complete/', views.artist_auto_complete, name='artist_auto_complete'),
 
 ]

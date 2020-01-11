@@ -5,7 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/artplein.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artplein.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/lots/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/lots/models.py" afterDir="false" />
+=======
+>>>>>>> lots
       <change beforePath="$PROJECT_DIR$/myvenv/bin/activate" beforeDir="false" afterPath="$PROJECT_DIR$/myvenv/bin/activate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myvenv/bin/activate.csh" beforeDir="false" afterPath="$PROJECT_DIR$/myvenv/bin/activate.csh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myvenv/bin/activate.fish" beforeDir="false" afterPath="$PROJECT_DIR$/myvenv/bin/activate.fish" afterDir="false" />
@@ -90,6 +93,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="211" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578743590359">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state x="211" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1373.873@67.27.1373.873" timestamp="1578743590359" />
     <state x="449" y="267" width="598" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578221411998">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
@@ -102,14 +109,21 @@
       <screen x="67" y="27" width="1373" height="873" />
     </state>
     <state x="281" y="176" width="424" height="484" key="FileChooserDialogImpl/67.27.1373.873@67.27.1373.873" timestamp="1577789949637" />
+<<<<<<< HEAD
     <state x="242" y="97" width="1022" height="737" key="SettingsEditor" timestamp="1578742168359">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
     <state x="242" y="97" key="SettingsEditor/67.27.1373.873@67.27.1373.873" timestamp="1578742168358" />
-    <state x="2165" y="87" width="1022" height="737" key="SettingsEditor/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1578384412337" />
-    <state x="417" y="108" width="672" height="676" key="search.everywhere.popup" timestamp="1577969874083">
+=======
+    <state x="242" y="97" width="1022" height="737" key="SettingsEditor" timestamp="1578743641123">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
-    <state x="417" y="108" width="672" height="676" key="search.everywhere.popup/67.27.1373.873@67.27.1373.873" timestamp="1577969874083" />
+    <state x="242" y="97" key="SettingsEditor/67.27.1373.873@67.27.1373.873" timestamp="1578743641123" />
+>>>>>>> lots
+    <state x="2165" y="87" width="1022" height="737" key="SettingsEditor/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1578384412337" />
+    <state x="417" y="108" width="672" height="676" key="search.everywhere.popup" timestamp="1578743575534">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state x="417" y="108" width="672" height="676" key="search.everywhere.popup/67.27.1373.873@67.27.1373.873" timestamp="1578743575534" />
   </component>
 </project>

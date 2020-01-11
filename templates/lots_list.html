@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<p>hello Lots</p>
+
+<a href="{% url 'create_lot' %}">Create new lot</a>
+<ul>
+    {% for item in items %}
+
+    {# <li>{{ item.code }} {{ item.artist }} {{ item.slug }} <a href="{{ item.slug }}">{{ item.title }}</a> </li> #}
+    <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+
+
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+

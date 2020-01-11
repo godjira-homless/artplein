@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('customers/', include('customers.urls')),
@@ -27,8 +26,8 @@ urlpatterns = [
     path('appraisers/', include('appraisers.urls')),
     path('technics/', include('technics.urls')),
     path('items/', include('items.urls')),
-    path('ajax/', include(("ajax.urls"))),
-    path('project/', include(("project.urls"))),
-
+    path('ajax/', include("ajax.urls")),
+    path('project/', include("project.urls")),
+    path('lots/', include("lots.urls")),
 
 ]

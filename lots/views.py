@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from .models import Lots
 from artists.models import Artist
@@ -24,6 +24,15 @@ def create_lot(request):
         form.save()
     form = LotsForm()
     return render(request, 'create_lots.html', {'form': form})
+
+@login_required
+def update_lot(request, slug):
+    id = get_object_or_404(Lots, slug=slug)
+    form = LotsForm(request.POST or None, instance=id)
+    if form.is_valid():
+        form.save()
+        return render(request, 'lots_list.html', {})
+    return render(request, 'lots_update.html', {'form': form})
 
 
 @login_required

@@ -27,10 +27,18 @@ class Lots(models.Model):
     def get_absolute_url(self):
         return reverse('detail_lot', kwargs={'slug': self.slug})
 
+    def save_modifier(self, code, *args, **kwargs):
+        sm = Lots.objects.filter(code=self.code)
+        if sm:
+            self.modifier = ""
+        else:
+            self.modifier = "dani"
+
     def save(self, *args, **kwargs):
         if not self.slug:
             # self.slug = slugify(self.title)
             self.slug = self.get_unique_slug(self.id, self.title, Lots.objects)
+        self.save_modifier(self.code, Lots.objects)
         return super().save(*args, **kwargs)
 
     def get_unique_slug(self, id, title, obj):

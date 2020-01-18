@@ -14,6 +14,7 @@ class LotsForm(forms.ModelForm):
                   'artist_display',
                   'artist',
                   'size',
+                  'modifier'
                   )
 
     def __init__(self, *args, **kwargs):

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -6,13 +7,18 @@ from django.utils.text import slugify
 from artists.models import Artist
 
 
+
 class Lots(models.Model):
     code = models.IntegerField(blank=False, default=None, unique=True)
     title = models.CharField(max_length=120, blank=False, null=False)
     artist = models.ForeignKey(Artist, null=True, blank=False, default=1, on_delete=models.SET_DEFAULT)
     size = models.CharField(max_length=100, blank=True, null=True)
     slug = models.SlugField(null=False, unique=True)
-    user = models.OneToOneField(User, default=1, on_delete=models.SET_DEFAULT)
+    # user = models.OneToOneField(User, default=1, on_delete=models.SET_DEFAULT, blank=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+               null=True, blank=True, on_delete=models.SET('1'))
+    modifier = models.CharField(max_length=120, blank=True, null=True)
+
 
 
     def __str__(self):

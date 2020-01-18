@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 from django.urls import reverse
@@ -11,6 +12,8 @@ class Lots(models.Model):
     artist = models.ForeignKey(Artist, null=True, blank=False, default=1, on_delete=models.SET_DEFAULT)
     size = models.CharField(max_length=100, blank=True, null=True)
     slug = models.SlugField(null=False, unique=True)
+    user = models.OneToOneField(User, default=1, on_delete=models.SET_DEFAULT)
+
 
     def __str__(self):
         return str(self.code)

@@ -11,7 +11,7 @@
         <div class="col-sm">
             <ul>
                 {% for item in items %}
-                <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+                <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a> {{ item.user }}</li>
                 {% endfor %}
             </ul>
         </div>

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
@@ -6,23 +7,26 @@ from artists.models import Artist
 from .forms import LotsForm
 import json
 
-
+@login_required
 def lots_list(request):
     lots = Lots.objects.all()
     context = {'items': lots}
     return render(request, 'lots_list.html', context)
 
 
+@login_required
 def create_lot(request):
-    if request.method == 'POST':
-        form = LotsForm(request.POST)
-        if form.is_valid():
-            item = form.save()
-            item.save()
+    coach_instance = Lots(user=request.user)
+    form = LotsForm(request.POST or None, request.FILES, instance=coach_instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.user = request.user
+        form.save()
     form = LotsForm()
     return render(request, 'create_lots.html', {'form': form})
 
 
+@login_required
 def artist_auto_complete(request):
     q = request.GET.get('term', '')
     # users = User.objects.filter(is_active=True)
@@ -37,7 +41,7 @@ def artist_auto_complete(request):
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
 
-
+@login_required
 def detail_lot(request, slug):
     q = Lots.objects.filter(slug__iexact=slug)
     if q.exists():

@@ -5,7 +5,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from artists.models import Artist
-
+from .utils import get_current_user
 
 
 class Lots(models.Model):
@@ -15,11 +15,9 @@ class Lots(models.Model):
     size = models.CharField(max_length=100, blank=True, null=True)
     slug = models.SlugField(null=False, unique=True)
     # user = models.OneToOneField(User, default=1, on_delete=models.SET_DEFAULT, blank=False)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,
-               null=True, blank=True, on_delete=models.SET('1'))
-    modifier = models.CharField(max_length=120, blank=True, null=True)
-
-
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             null=True, blank=True, related_name='%(class)s_created', on_delete=models.SET('1'))
+    modified_by = models.ForeignKey(User, null=True, related_name='%(class)s_modified', on_delete=models.SET('1'))
 
     def __str__(self):
         return str(self.code)
@@ -27,18 +25,10 @@ class Lots(models.Model):
     def get_absolute_url(self):
         return reverse('detail_lot', kwargs={'slug': self.slug})
 
-    def save_modifier(self, code, *args, **kwargs):
-        sm = Lots.objects.filter(code=self.code)
-        if sm:
-            self.modifier = ""
-        else:
-            self.modifier = "dani"
-
     def save(self, *args, **kwargs):
         if not self.slug:
             # self.slug = slugify(self.title)
             self.slug = self.get_unique_slug(self.id, self.title, Lots.objects)
-        self.save_modifier(self.code, Lots.objects)
         return super().save(*args, **kwargs)
 
     def get_unique_slug(self, id, title, obj):

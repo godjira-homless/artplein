@@ -16,11 +16,12 @@ def lots_list(request):
 
 @login_required
 def create_lot(request):
-    coach_instance = Lots(user=request.user)
-    form = LotsForm(request.POST or None, request.FILES, instance=coach_instance)
+    # coach_instance = Lots(user=request.user)
+    form = LotsForm(request.POST or None)
     if form.is_valid():
+        us = request.user
         obj = form.save(commit=False)
-        obj.user = request.user
+        obj.created_by = us
         form.save()
     form = LotsForm()
     return render(request, 'create_lots.html', {'form': form})
@@ -30,6 +31,9 @@ def update_lot(request, slug):
     id = get_object_or_404(Lots, slug=slug)
     form = LotsForm(request.POST or None, instance=id)
     if form.is_valid():
+        us = request.user
+        obj = form.save(commit=False)
+        obj.modified_by = us
         form.save()
         return render(request, 'lots_list.html', {})
     return render(request, 'lots_update.html', {'form': form})

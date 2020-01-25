@@ -11,7 +11,7 @@
         <div class="col-sm">
             <ul>
                 {% for item in items %}
-                <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a> {{ item.user }} mod: {{ item.modifier }}</li>
+                <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a> user: {{ item.created_by }} mod: {{ item.modified_by }}</li>
                 <li><a href="{% url 'update_lot' item.slug %}">Update {{ item.title }}</a></li>
                 {% endfor %}
             </ul>

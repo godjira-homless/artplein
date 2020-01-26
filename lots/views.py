@@ -28,12 +28,9 @@ def create_lot(request):
 
 @login_required
 def update_lot(request, slug):
-    # id = get_object_or_404(Lots, slug=slug)
     instance = get_object_or_404(Lots, slug=slug)
-    form = LotsForm(request.POST or None, instance=instance)
-    ar = instance.artist
-    print("na" + str(ar))
-    # form = LotsForm(initial={'artist_display': ar, 'artist': 1}, instance=instance)
+    form = LotsForm(request.POST or None, instance=instance, initial={'artist_display': instance.artist})
+    # form = LotsForm(initial={'artist_display': ar}, instance=instance)
     if form.is_valid():
         us = request.user
         obj = form.save(commit=False)

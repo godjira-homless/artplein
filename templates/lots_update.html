@@ -3,6 +3,7 @@
 {% block content %}
 
 
+
 <form action="" method="post">{% csrf_token %}
 <div class="forms">
     {{ form }}
@@ -17,6 +18,7 @@
 
  <script>
    $(document).ready(function(){
+   $( "#id_artist_display" ).val('{{ form.artist_display.value }}');
     $( "#id_artist_display" ).autocomplete({
       source: "{% url 'artist_auto_complete' %}",
       selectFirst:true,

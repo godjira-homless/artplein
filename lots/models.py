@@ -10,7 +10,7 @@ from artists.models import Artist
 class Lots(models.Model):
     code = models.IntegerField(blank=False, default=None, unique=True)
     title = models.CharField(max_length=120, blank=False, null=False)
-    artist = models.ForeignKey(Artist, null=True, blank=False, default=1, on_delete=models.SET_DEFAULT)
+    artist = models.ForeignKey(Artist, null=True, blank=False, default=0, on_delete=models.SET_DEFAULT)
     size = models.CharField(max_length=100, blank=True, null=True)
     slug = models.SlugField(null=False, unique=True)
     # user = models.OneToOneField(User, default=1, on_delete=models.SET_DEFAULT, blank=False)

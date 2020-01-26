@@ -69,7 +69,6 @@ def create_ajax(request):
             artist_name = request.POST.get("artist")
             item.artist, created = Artist.objects.get_or_create(name=artist_name)
             item.save()
-
     next_code = Ajax.objects.last_code()
     next_code.code += 1
     form = AjaxForm(initial={'code': next_code})

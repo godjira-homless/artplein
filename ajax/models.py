@@ -23,7 +23,7 @@ class Ajax(models.Model):
     title = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
     size = models.CharField(max_length=50, blank=True)
-    artist = models.ForeignKey(Artist, null=True, blank=False, default=1, on_delete=models.SET_DEFAULT)
+    artist = models.ForeignKey(Artist, null=True, blank=False, default=0, on_delete=models.SET_DEFAULT)
     tech = models.ForeignKey(Technic, null=True, blank=False, default=1, on_delete=models.SET_DEFAULT)
     slug = models.SlugField(null=False, unique=True)
     objects = AjaxManager()

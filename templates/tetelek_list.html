@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <a href="{% url 'create_tetelek' %}">
+                <button class="btn btn-secondary">Create new tétel</button>
+            </a>
+        </div>
+        <div class="col-sm">
+            <ul>
+                {% for item in items %}
+                <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a> artist: {{ item.artist }}</li>
+                <li><a href="">Update {{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+

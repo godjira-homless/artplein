@@ -17,28 +17,10 @@ def lots_list(request):
 @login_required
 def create_lot(request):
     form = LotsForm(request.POST or None)
-    """
-    if request.method == 'POST':
-        aid = request.POST.get("artist")
-        # artist_name = Artist.objects.get(pk=aid)
-        try:
-            artist_name = Artist.objaid = request.POST.get("artist")ects.get(pk=aid)
-        except Artist.DoesNotExist:
-            artist_name = None
-    """
-    aid = request.POST.get("artist")
-    if aid:
-        print(aid)
-        aname = request.POST.get("artist_display")
-        form.artist, created = Artist.objects.get_or_create(name=aname)
-
     if form.is_valid():
-        aname = form.cleaned_data['artist']
         us = request.user
         obj = form.save(commit=False)
         obj.created_by = us
-        if aname:
-            obj.artist, created = Artist.objects.get_or_create(name=aname)
         form.save()
     form = LotsForm()
     return render(request, 'create_lots.html', {'form': form})
@@ -51,6 +33,8 @@ def update_lot(request, slug):
     if form.is_valid():
         us = request.user
         obj = form.save(commit=False)
+        # artist_name = form.cleaned_data["artist"]
+        # obj.artist, created = Artist.objects.get_or_create(name=artist_name)
         obj.modified_by = us
         form.save()
         return render(request, 'lots_list.html', {})

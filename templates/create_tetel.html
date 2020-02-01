@@ -17,8 +17,8 @@
 
  <script>
    $(document).ready(function(){
-    $( "#id_artist_display" ).autocomplete({
-      source: "{% url 'artist_auto_complete' %}",
+    $( "#id_artist" ).autocomplete({
+      source: "{% url 'auto_complete' %}",
       selectFirst:true,
       minLength:2,
       select:function(event,ui) {

@@ -1,19 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <div class="container">
     <div class="row">
         <div class="col-sm">
             <a href="{% url 'create_tetelek' %}">
-                <button class="btn btn-secondary">Create new tétel</button>
+                <button class="btn btn-secondary">Új tétel rögzítése</button>
             </a>
         </div>
         <div class="col-sm">
             <ul>
-                {% for item in items %}
-                <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a> artist: {{ item.artist }} user {{ item.created_by }} mod: {{ item.modified_by }}</li>
-                <li><a href="{% url 'update_tetel' item.slug %}">Update {{ item.title }}</a></li>
-                {% endfor %}
+                <p>search</p>
             </ul>
         </div>
         <div class="col-sm">
@@ -21,6 +19,47 @@
         </div>
     </div>
 </div>
+
+
+<div class="container py-5">
+    <div class="row text-center mb-5">
+        <div class="col-lg-7 mx-auto">
+            <h1 class="display-4">Product List</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- List group-->
+            <ul class="list-group shadow">
+                {% for item in items %}
+                <!-- list group item-->
+                <li class="list-group-item">
+                    <!-- Custom content-->
+                    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                        <div class="media-body order-2 order-lg-1">
+                            <h5 class="mt-0 font-weight-bold mb-2">{{ item.artist }}</h5>
+                            <p class="font-italic text-muted mb-0 small">{{ item.title }}</p>
+                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                <h6 class="font-weight-bold my-2">{{ item.created_by }} | {{ item.modified_by }}</h6>
+                                <a href="{% url 'update_tetel' item.slug %}">Update {{ item.title }}</a>
+                                <ul class="list-inline small">
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                </ul>
+                            </div>
+                        </div><img src="{% static 'images/300300.jpg' %}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                    </div> <!-- End -->
+                </li>
+                <!-- list group item -->
+            {% endfor %}
+            </ul> <!-- End -->
+        </div>
+    </div>
+</div>
+
 
 
 {% endblock content %}

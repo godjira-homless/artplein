@@ -7,7 +7,6 @@ from artists.models import Artist
 
 
 class TetelekForm(forms.ModelForm):
-    # artist_display = forms.CharField(max_length=100)
     artist = forms.CharField(max_length=100, required=False)
 
     class Meta:

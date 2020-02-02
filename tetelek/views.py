@@ -17,10 +17,14 @@ def tetelek_list(request):
 def create_tetelek(request):
     form = TetelekForm(request.POST or None)
     if form.is_valid():
+        us = request.user
+        obj = form.save(commit=False)
+        obj.created_by = us
         form.save()
     form = TetelekForm()
     return render(request, 'create_tetel.html', {'form': form})
 
+@login_required
 def auto_complete(request):
     q = request.GET.get('term', '')
     # users = User.objects.filter(is_active=True)
@@ -38,8 +42,12 @@ def auto_complete(request):
 @login_required
 def update_tetel(request, slug):
     instance = get_object_or_404(Tetelek, slug=slug)
-    fr = TetelekForm(request.POST or None, instance=instance)
-    artist_name = Artist.objects.values_list('name', flat=True).get(pk=fr.initial['artist'])
+    fr = TetelekForm(request.POST, instance=instance)
+    aid = fr.initial['artist']
+    if aid:
+        artist_name = Artist.objects.values_list('name', flat=True).get(pk=aid)
+    else:
+        artist_name = ""
     form = TetelekForm(request.POST or None, initial={'artist': artist_name}, instance=instance)
     if form.is_valid():
         us = request.user

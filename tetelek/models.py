@@ -1,13 +1,18 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 from django.urls import reverse
 from django.utils.text import slugify
 from artists.models import Artist
+from django.conf import settings
 
 
 class Tetelek(models.Model):
     title = models.CharField(max_length=120, blank=False)
-    artist = models.ForeignKey(Artist, null=True, blank=True, default=1, on_delete=models.SET_DEFAULT)
+    artist = models.ForeignKey(Artist, null=True, blank=True, on_delete=models.SET_NULL)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             null=True, blank=True, related_name='created', on_delete=models.SET('1'))
+    modified_by = models.ForeignKey(User, null=True, related_name='modified', on_delete=models.SET('1'))
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):

@@ -6,8 +6,8 @@ from artists.models import Artist
 
 
 class Tetelek(models.Model):
-    title = models.CharField(max_length=120, blank=False, null=False)
-    artist = models.ForeignKey(Artist, null=True, blank=False, default=0, on_delete=models.SET_DEFAULT)
+    title = models.CharField(max_length=120, blank=False)
+    artist = models.ForeignKey(Artist, null=True, blank=True, default=1, on_delete=models.SET_DEFAULT)
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):

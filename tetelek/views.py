@@ -39,10 +39,8 @@ def auto_complete(request):
 def update_tetel(request, slug):
     instance = get_object_or_404(Tetelek, slug=slug)
     fr = TetelekForm(request.POST or None, instance=instance)
-    #arti = fr.initial
-    aid = fr.initial['artist']
-    aname = Artist.objects.values_list('name', flat=True).get(pk=aid)
-    form = TetelekForm(request.POST or None, initial={'artist': aname}, instance=instance)
+    artist_name = Artist.objects.values_list('name', flat=True).get(pk=fr.initial['artist'])
+    form = TetelekForm(request.POST or None, initial={'artist': artist_name}, instance=instance)
     if form.is_valid():
         us = request.user
         obj = form.save(commit=False)

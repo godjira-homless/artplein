@@ -12,7 +12,7 @@
             <ul>
                 {% for item in items %}
                 <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a> artist: {{ item.artist }}</li>
-                <li><a href="">Update {{ item.title }}</a></li>
+                <li><a href="{% url 'update_tetel' item.slug %}">Update {{ item.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>

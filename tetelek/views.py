@@ -3,7 +3,7 @@ import json
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Tetelek, Artist
 from .forms import TetelekForm
 
@@ -34,3 +34,19 @@ def auto_complete(request):
     data = json.dumps(users_list)
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+@login_required
+def update_tetel(request, slug):
+    instance = get_object_or_404(Tetelek, slug=slug)
+    fr = TetelekForm(request.POST or None, instance=instance)
+    #arti = fr.initial
+    aid = fr.initial['artist']
+    aname = Artist.objects.values_list('name', flat=True).get(pk=aid)
+    form = TetelekForm(request.POST or None, initial={'artist': aname}, instance=instance)
+    if form.is_valid():
+        us = request.user
+        obj = form.save(commit=False)
+        obj.modified_by = us
+        form.save()
+        return render(request, 'tetelek_list.html', {})
+    return render(request, 'tetelek_update.html', {'form': form})

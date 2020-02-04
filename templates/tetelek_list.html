@@ -50,7 +50,9 @@
                                     <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
                                 </ul>
                             </div>
-                        </div><img src="{% static 'images/300300.jpg' %}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                        </div>
+                        <img src="{{ item.photo.url}}" alt="{{ item.title }}" class="ml-lg-5 order-1 order-lg-2">
+
                     </div> <!-- End -->
                 </li>
                 <!-- list group item -->

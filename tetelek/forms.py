@@ -11,10 +11,12 @@ class TetelekForm(forms.ModelForm):
 
     class Meta:
         model = Tetelek
-        fields = ('title',
-                  'artist',
+        fields = (
+            'code',
+            'title',
+            'artist',
+            'photo',
                   )
-
 
     def clean_artist(self, commit=True):
         artist = self.cleaned_data.get("artist")

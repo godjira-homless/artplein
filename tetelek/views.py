@@ -24,7 +24,10 @@ def create_tetelek(request):
         obj.created_by = us
         form.save()
         return HttpResponseRedirect(reverse('tetelek_list'))
-    form = TetelekForm()
+    next_code = Tetelek.objects.last_code()
+    next_code.code += 1
+    form = TetelekForm(initial={'code': next_code})
+    # form = TetelekForm()
     return render(request, 'create_tetel.html', {'form': form})
 
 @login_required

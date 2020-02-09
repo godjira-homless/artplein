@@ -2,8 +2,10 @@ import json
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+
 from .models import Tetelek, Artist
 from .forms import TetelekForm
 
@@ -15,12 +17,13 @@ def tetelek_list(request):
 
 @login_required
 def create_tetelek(request):
-    form = TetelekForm(request.POST or None)
+    form = TetelekForm(request.POST or None, request.FILES)
     if form.is_valid():
         us = request.user
         obj = form.save(commit=False)
         obj.created_by = us
         form.save()
+        return HttpResponseRedirect(reverse('tetelek_list'))
     form = TetelekForm()
     return render(request, 'create_tetel.html', {'form': form})
 

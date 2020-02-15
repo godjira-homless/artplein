@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<p>Extra</p>
+
+<a href="{% url 'create_extra' %}">Create extra</a>
+<ul>
+    {% for item in items %}
+<li>{{ item.artist }} {{ item.owner }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+

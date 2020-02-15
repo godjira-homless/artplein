@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'project',
     'lots',
     'tetelek',
+    'extra',
 
 ]
 

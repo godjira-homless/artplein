@@ -1,15 +1,17 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
+from artists.models import Artist
+from tetelek.forms import TetelekForm
 from .models import Extras
 from .forms import ExtrasForm
 
 
 @login_required
 def extra_list(request):
-    extra = Extras.objects.all()
+    extra = Extras.objects.filter(owner=request.user)
     context = {'items': extra}
     return render(request, 'extra_list.html', context)
 
@@ -28,3 +30,23 @@ def create_extra(request):
         return HttpResponseRedirect(reverse('extra_list'))
     form = ExtrasForm()
     return render(request, 'extra_create.html', {'form': form})
+
+
+@login_required
+def update_extra(request, slug):
+    only_the_owner = Extras.objects.filter(owner=request.user, slug=slug)
+    if not only_the_owner:
+        return HttpResponseRedirect(reverse('extra_list'))
+    instance = get_object_or_404(Extras, slug=slug)
+    fr = ExtrasForm(request.POST, instance=instance)
+    aid = fr.initial['artist']
+    if aid:
+        artist_name = Artist.objects.values_list('name', flat=True).get(pk=aid)
+    else:
+        artist_name = ""
+    form = ExtrasForm(request.POST or None, initial={'artist': artist_name}, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        form.save()
+        return HttpResponseRedirect(reverse('extra_list'))
+    return render(request, 'extra_update.html', {'form': form})

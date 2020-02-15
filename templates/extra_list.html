@@ -6,7 +6,7 @@
 <a href="{% url 'create_extra' %}">Create extra</a>
 <ul>
     {% for item in items %}
-<li>{{ item.artist }} {{ item.owner }}</li>
+<li>{{ item.artist }} {{ item.owner }}  <a href="{% url 'update_extra' item.slug %}">Update</a></li>
     {% endfor %}
 </ul>
 

@@ -21,6 +21,7 @@ def path_and_rename(instance, filename):
     # return the whole path to the file
     return os.path.join(upload_to, filename)
 
+
 class TetelManager(models.Manager):
 
     def last_code(self):

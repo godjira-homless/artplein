@@ -69,7 +69,8 @@ def update_tetel(request, slug):
         us = request.user
         obj = form.save(commit=False)
         obj.modified_by = us
-        obj.photo = request.FILES['photo']
+        if request.FILES:
+            obj.photo = request.FILES['photo']
         form.save()
         return HttpResponseRedirect(reverse('tetelek_list'))
     return render(request, 'tetelek_update.html', {'form': form})

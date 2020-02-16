@@ -50,3 +50,13 @@ def update_extra(request, slug):
         form.save()
         return HttpResponseRedirect(reverse('extra_list'))
     return render(request, 'extra_update.html', {'form': form})
+
+
+@login_required
+def delete_extra(request, slug):
+    instance = get_object_or_404(Extras, slug=slug, owner=request.user)
+    if instance:
+        instance.delete()
+        return HttpResponseRedirect(reverse('extra_list'))
+    else:
+        return HttpResponseRedirect(reverse('extra_list'))

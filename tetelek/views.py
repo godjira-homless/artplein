@@ -28,9 +28,12 @@ def create_tetelek(request):
         return HttpResponseRedirect(reverse('tetelek_list'))
     next_code = Tetelek.objects.last_code()
     next_code.code += 1
-    extra_artist = Extras.objects.filter(owner=request.user).values_list('artist', flat=True)
-    aid = extra_artist[0]
-    artist_name = Artist.objects.values_list('name', flat=True).get(pk=aid)
+    if Extras.objects.filter(owner=request.user).exists():
+        extra_artist = Extras.objects.filter(owner=request.user).values_list('artist', flat=True)
+        aid = extra_artist[0]
+        artist_name = Artist.objects.values_list('name', flat=True).get(pk=aid)
+    else:
+        artist_name = ""
     form = TetelekForm(initial={'code': next_code, 'artist': artist_name})
     # form = TetelekForm()
     return render(request, 'create_tetel.html', {'form': form})
@@ -55,7 +58,7 @@ def auto_complete(request):
 @login_required
 def update_tetel(request, slug):
     instance = get_object_or_404(Tetelek, slug=slug)
-    fr = TetelekForm(request.POST, instance=instance)
+    fr = TetelekForm(request.POST or None, request.FILES or None, instance=instance)
     aid = fr.initial['artist']
     if aid:
         artist_name = Artist.objects.values_list('name', flat=True).get(pk=aid)
@@ -66,6 +69,7 @@ def update_tetel(request, slug):
         us = request.user
         obj = form.save(commit=False)
         obj.modified_by = us
+        obj.photo = request.FILES['photo']
         form.save()
-        return render(request, 'tetelek_list.html', {})
+        return HttpResponseRedirect(reverse('tetelek_list'))
     return render(request, 'tetelek_update.html', {'form': form})

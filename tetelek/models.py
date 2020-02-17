@@ -1,6 +1,8 @@
 import os
+from os.path import exists
 
 from django.contrib.auth.models import User
+from django.contrib.sessions.backends import file
 from django.db import models
 
 from django.urls import reverse
@@ -11,14 +13,24 @@ from django.conf import settings
 
 def path_and_rename(instance, filename):
     upload_to = 'images/'
+
     ext = filename.split('.')[-1]
     # get filename
     if instance.code:
         filename = '{}.{}'.format(instance.code, ext)
+        ph = "media/images/" + str(filename)
+        if exists(ph):
+            kieg = "_{:02d}".format(1)
+            ext = filename.split('.')[-1]
+            filename = '{}{}.{}'.format(instance.code, kieg, ext)
+
+
+
     else:
         # set filename as random string
         filename = '{}.{}'.format("525", ext)
     # return the whole path to the file
+
     return os.path.join(upload_to, filename)
 
 

@@ -26,8 +26,11 @@ def create_tetelek(request):
         obj.created_by = us
         form.save()
         return HttpResponseRedirect(reverse('tetelek_list'))
-    next_code = Tetelek.objects.last_code()
-    next_code.code += 1
+    if Tetelek.objects.exists():
+        next_code = Tetelek.objects.last_code()
+        next_code.code += 1
+    else:
+        next_code = 1
     if Extras.objects.filter(owner=request.user).exists():
         extra_artist = Extras.objects.filter(owner=request.user).values_list('artist', flat=True)
         aid = extra_artist[0]

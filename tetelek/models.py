@@ -14,14 +14,15 @@ from django.conf import settings
 def exist_file(ph):
     return exists(ph)
 
-def path_and_rename(instance, filename):
+
+def path_and_rename2(instance, filename):
     upload_to = 'images/'
     ext = filename.split('.')[-1]
     filename = '{}.{}'.format(instance.code, ext)
     return os.path.join(upload_to, filename)
 
 
-def path_and_rename2(instance, filename):
+def path_and_rename(instance, filename):
     upload_to = 'images/'
     ext = "jpg"
     ph = "media/images/{}.{}".format(instance.code, ext)
@@ -59,7 +60,7 @@ class Tetelek(models.Model):
     code = models.IntegerField(blank=False, default=None, unique=True)
     title = models.CharField(max_length=120, blank=False)
     artist = models.ForeignKey(Artist, null=True, blank=True, on_delete=models.SET_NULL)
-    photo = models.ImageField(upload_to=path_and_rename2, default='images/default.jpg')
+    photo = models.ImageField(upload_to=path_and_rename, default='images/default.jpg')
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
                                    null=True, blank=True, related_name='created', on_delete=models.SET('1'))
     modified_by = models.ForeignKey(User, null=True, related_name='modified', on_delete=models.SET('1'))

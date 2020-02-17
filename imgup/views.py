@@ -15,9 +15,8 @@ def create_imgup(request):
     if form.is_valid():
         title = form.cleaned_data['title']
         for f in request.FILES.getlist('file'):
-            instance = Imguploads(title=title, file=f)
-            instance.save()
-        return HttpResponse('OK')
-        # form.save()
+            form.file = f
+        # return HttpResponse('OK')
+        form.save()
     form = ImgupForm()
     return render(request, 'create_img.html', {'form': form})

@@ -28,7 +28,7 @@ def path_and_rename(instance, filename):
     ph = "media/images/{}.{}".format(instance.code, ext)
 
     if exist_file(ph):
-        kieg_n = 1;
+        kieg_n = 1
         kieg = "_{:02d}".format(kieg_n)
         filename = '{}{}.{}'.format(instance.code, kieg, ext)
         ph = "media/images/{}".format(filename)

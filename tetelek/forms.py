@@ -8,6 +8,7 @@ from artists.models import Artist
 
 class TetelekForm(forms.ModelForm):
     artist = forms.CharField(max_length=100, required=False)
+    # photo = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
     class Meta:
         model = Tetelek

@@ -20,6 +20,7 @@ def tetelek_list(request):
 @login_required
 def create_tetelek(request):
     form = TetelekForm(request.POST or None, request.FILES)
+    # files = request.FILES.getlist('photo')
     if form.is_valid():
         us = request.user
         obj = form.save(commit=False)

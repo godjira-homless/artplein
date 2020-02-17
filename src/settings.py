@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'lots',
     'tetelek',
     'extra',
+    'imgup',
 
 ]
 

@@ -8,6 +8,7 @@ urlpatterns = [
     path('update/<slug:slug>', views.update_tetel, name='update_tetel'),
     # path('<slug:slug>', views.detail_lot, name='detail_lot'),
     path('auto_complete/', views.auto_complete, name='auto_complete'),
+    #path('search/', views.tetelResults, name='tetel_search'),
 
 ]
 

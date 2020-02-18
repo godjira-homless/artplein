@@ -1,6 +1,7 @@
 import json
 
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -11,7 +12,7 @@ from .forms import TetelekForm
 
 
 @login_required
-def tetelek_list(request):
+def tetelek_list_old(request):
     tetelek = Tetelek.objects.all()
     context = {'items': tetelek}
     return render(request, 'tetelek_list.html', context)
@@ -78,3 +79,23 @@ def update_tetel(request, slug):
         form.save()
         return HttpResponseRedirect(reverse('tetelek_list'))
     return render(request, 'tetelek_update.html', {'form': form})
+
+
+def tetelek_list(request):
+    queryset_list = Tetelek.objects.all()
+    query = request.GET.get("q")
+    if query:
+        queryset_list = queryset_list.filter(
+            Q(title__icontains=query) | Q(code__icontains=query)
+        )
+    paginator = Paginator(queryset_list, 10)
+    page = request.GET.get('page')
+    try:
+        queryset_list = paginator.page(page)
+    except PageNotAnInteger:
+        queryset_list = paginator.page(1)
+    except EmptyPage:
+        queryset_list = paginator.page(paginator.num_pages)
+
+    context = {'items': queryset_list}
+    return render(request, 'tetelek_list.html', context)
